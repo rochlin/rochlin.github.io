@@ -44,7 +44,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Kontakt aufnehmen',
-          href: getPermalink('de#contact'),
+          href: getRelativeLocaleUrl('de#contact'),
         },
       ]}
       isSticky
@@ -196,7 +196,7 @@ const { metadata } = Astro.props;
    id="form"
    title="Und vieles mehr..."
    subtitle="Dies ist nur ein kleiner Einblick, viele andere bahnbrechende Projekte bleiben hinter den Kulissen."
-   actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getPermalink('de#contact'), }]}
+   actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getRelativeLocaleUrl('de#contact'), }]}
    
  >
 
