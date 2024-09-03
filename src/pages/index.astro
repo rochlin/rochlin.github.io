@@ -1,0 +1,264 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import { Image } from 'astro:assets';
+import waterTreatment from '../assets/images/water-treatment.png';
+import cubeAnimation from '../assets/images/cube-animation.gif';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+import { YouTube } from 'astro-embed';
+
+
+// Set defaults and get args
+import siteParams from '../params';
+const defaultEmail = siteParams.defaultEmail;
+const { address = defaultEmail } = Astro.props;
+
+// Get parts
+const addressParts = address.split('@');
+const userName = 'simon.dev';
+const rootDomain = addressParts[1];
+const rootDomainParts = rootDomain.split('.');
+const domainName = 'gmail';
+const topLevelDomain = 'com';
+
+
+
+
+/*const metadata = {
+  title: 'SaaS Landing Page',
+};*/
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+
+
+  <Fragment slot="header">
+    <Header
+      {...headerData}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get in touch',
+          href: '/#contact',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+  
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    actions={[
+      { variant: 'primary', text: 'Get in touch', href: '#contact' },
+      { text: 'Learn more', href: getPermalink('/projects')},
+    ]}
+    image={{
+      src: '~/assets/images/hero-image-2.png',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Engineering Excellence with <span class="text-accent dark:text-white highlight"
+      >Digital Twins</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Drive innovation in your projects with <span class="font-semibold">Digital Twin and CAD services</span>. Leverage Industry 4.0 automation to enhance efficiency and accuracy in all engineering endeavors.</span>
+    </Fragment>
+    
+  </Hero2>
+
+  
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Simon Rochlin"
+    actions={[{ variant: 'primary', text: 'Get in touch', href: '/#contact' }]}
+  >
+    <Fragment slot="subtitle">
+      As a mechanical engineer, software developer, and digital twin specialist, I bring a wealth of experience from both corporate and start-up roles.
+      My passion lies in leading organizations through digital transformation, using digital twins to innovate and optimize operations.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Hero>
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   id="about"
+   columns={1}
+   isReversed
+   items={[
+     {
+       icon: 'tabler:brand-linkedin',
+       callToAction: {
+         target: '_blank',
+         text: 'LinkedIn',
+         href: 'https://www.linkedin.com/in/simon-rochlin-5a391010a/',
+       },
+     },
+   ]}
+   image={{
+     src: '~/assets/images/profile-pic.png',
+     alt: 'Profile Picture',
+     loading: 'eager',
+   }}
+ >
+   <Fragment slot="content">
+     <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+     <p>
+      Welcome to my world of engineering innovation. My work is a testament to my passion for transforming concepts into reality,
+      where each calculation and code line contributes to the digital tapestry of the future.
+     </p>
+     <br />
+     <p>
+      I find inspiration in the seamless integration of technology and engineering, whether it's the challenge of refining a mechanical design,
+      the elegance of a software algorithm, or the potential of digital transformation in today's industries.
+     </p>
+     <br />
+     <p>Curious to learn more about my work? Let's connect and explore the future together:
+     </p>
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Education"
+    items={[
+      {
+        title: `Mechanical Engineer, M. Sc.<br /> <span class="font-normal">Nuremberg Institute of Technology Georg Simon Ohm</span> <br /> <span class="text-sm font-normal">2021 - 2024</span>`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `Mechanical Engineer, B. Eng.<br /> <span class="font-normal">Karlsruhe University of Applied Sciences</span> <br /> <span class="text-sm font-normal">2016 - 2020</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    id="skills"
+    title="Skills"
+    subtitle="Uncover the expertise behind creating impactful and advanced solutions."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Digital twin development',
+        description: 'Specializing in developing digital twins for process simulation, automation, and virtual commissioning.',
+      },
+      {
+        title: 'Computer-aided design',
+        description: 'Skilled in 3D modeling and parametric design, with extensive experience in producing precise and innovative engineering solutions.',
+      },
+      {
+        title: 'Programming',
+        description: 'Proficient in various programming languages, focusing on creating seamless user experiences and robust full-stack applications.',
+      },
+      {
+        title: 'AR/VR application development',
+        description: 'Expert in developing immersive augmented and virtual reality applications for enhanced product configurators and simulations.',
+      },
+      {
+        title: 'Automation and simulation',
+        description: 'Advanced in automating processes and utilizing digital twins to enhance workflow efficiency and virtual commissioning.',
+      },
+      {
+        title: 'Product configurator development',
+        description: 'Expert in designing interactive, user-friendly product configurators that enhance customer engagement and personalization.',
+      }
+    ]}
+  />
+
+
+     <!-- Steps2 Widget ****************** -->
+
+     <Steps2
+     id="contact"
+     title="Reach out via other media"
+     subtitle="Feel free to connect with me through email or social media. I'll be glad to get in touch with you!"
+     callToAction={{
+       text: 'Get in touch',
+       href: "mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d",
+     }}
+     items={[
+       {
+         title: 'Email',
+         description: '<a href="mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d"><span class="email">'+userName+'@'+domainName+'<b>.'+domainName+'</b>.'+topLevelDomain+'</span></a>',
+         icon: 'tabler:mail',
+       },
+       {
+         title: 'Phone',
+         description: '+49 176 301 736 63',
+         icon: 'tabler:headset',
+       },
+       {
+         title: 'Follow me',
+         description: '<a href="https://www.linkedin.com/in/simon-rochlin-5a391010a/">Simon Rochlin</a>',
+         icon: 'tabler:brand-linkedin',
+       },
+     ]}
+   >
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ 
+   </Steps2>
+
+
+
+  <!--
+  BlogLatestPost Widget **************** 
+
+  <BlogLatestPosts
+    id="blog"
+    title="Stay informed with AstroWind's blog"
+    information={`Explore our collection of articles, guides, and tutorials on web development, design trends, and using AstroWind effectively for your projects.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
+
+-->
+
+
+
+</Layout>
