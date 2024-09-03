@@ -9,6 +9,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 
 import { headerData } from '~/navigation';
 import { headerDataDe } from '~/navigation';
+import { getPermalink } from '~/utils/permalinks';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 
@@ -24,7 +25,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Kontakt aufnehmen',
-          href: 'de#contact',
+          href: getPermalink('de#contact'),
         },
       ]}
       isSticky
