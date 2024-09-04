@@ -75,7 +75,7 @@ const { metadata } = Astro.props;
   <Hero2
     actions={[
       { variant: 'primary', text: 'Kontakt aufnehmen', href: '#contact' },
-      { text: 'Mehr erfahren', href:getPermalink('de') + '/#contact'},
+      { text: 'Mehr erfahren', href:getRelativeLocaleUrl('de', '/projects')},
     ]}
     image={{
       src: '~/assets/images/hero-image-2.png',
@@ -99,7 +99,7 @@ const { metadata } = Astro.props;
   <Hero
     id="hero"
     title="Simon Rochlin"
-    actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href:'de#contact'}]}
+    actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href:getPermalink('de') + '/#contact'}]}
   >
     <Fragment slot="subtitle">
       Als Maschinenbauingenieur, Softwareentwickler und Experte im Bereich Digital Twom begleite ich Unternehmen auf ihrem Weg der digitalen Transformation. Mein Fokus liegt darauf, mit digitalen Zwillingen Innovationen voranzutreiben und Prozesse zu optimieren.
