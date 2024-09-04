@@ -75,7 +75,7 @@ const { metadata } = Astro.props;
   <Hero2
     actions={[
       { variant: 'primary', text: 'Kontakt aufnehmen', href: '#contact' },
-      { text: 'Mehr erfahren', href:getRelativeLocaleUrl('de', '/projects')},
+      { text: 'Mehr erfahren', href:getPermalink('de') + '/#contact'},
     ]}
     image={{
       src: '~/assets/images/hero-image-2.png',
